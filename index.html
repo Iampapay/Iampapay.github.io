@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subhadip Betal — Associate Software Developer | Full-Stack &amp; Laravel Engineer</title>
+  <meta name="description" content="Portfolio of Subhadip Betal, Associate Software Developer at Arctwist Technology Solutions in Kolkata. Building innovative web solutions, REST APIs, eCommerce apps, and CMS platforms with PHP, Laravel, MySQL, and JavaScript.">
+  <meta name="author" content="Subhadip Betal">
+  <meta name="keywords" content="Subhadip Betal, Software Developer Kolkata, Laravel Developer, PHP Developer, Full-Stack Web Developer, Arctwist Technology Solutions, Iampapay">
+  <link rel="canonical" href="https://iampapay.github.io/">
+
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iampapay.github.io/">
+  <meta property="og:title" content="Subhadip Betal — Associate Software Developer | Portfolio">
+  <meta property="og:description" content="Software developer building innovative web solutions with Laravel, PHP, MySQL, JavaScript, jQuery, and Bootstrap at Arctwist Technology Solutions.">
+  <meta property="og:image" content="https://iampapay.github.io/assets/images/og-preview.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Subhadip Betal — Associate Software Developer">
+  <meta name="twitter:description" content="Full-Stack Web &amp; Laravel Developer in Kolkata, India. Explore NarrativeNest, CartWonders, and ByteGuide-Master.">
+  <meta name="twitter:image" content="https://iampapay.github.io/assets/images/og-preview.jpg">
+
+  <!-- Google Fonts: Space Grotesk (Display), Inter (Body), JetBrains Mono (Monospace) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <!-- Anti-FOUC Theme Initialization Script (runs before first paint) -->
+  <script>
+    (function() {
+      try {
+        var saved = window.localStorage.getItem('sb_portfolio_theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data (Person Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Subhadip Betal",
+    "jobTitle": "Associate Software Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Arctwist Technology Solutions",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rajarhat, Kolkata",
+        "addressRegion": "West Bengal",
+        "addressCountry": "IN"
+      }
+    },
+    "url": "https://iampapay.github.io",
+    "email": "mailto:subhadipbetal316@gmail.com",
+    "telephone": "+91-7908435173",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kolkata",
+      "addressRegion": "West Bengal",
+      "addressCountry": "India"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Calcutta Institute of Technology" },
+      { "@type": "CollegeOrUniversity", "name": "Mahishadal Raj College" }
+    ],
+    "knowsLanguage": ["Bengali", "English", "Hindi"],
+    "knowsAbout": ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "Ajax", "PHP", "Laravel", "Composer", "MySQL", "Git", "GitHub", "Jira", "Bitbucket", "REST APIs"],
+    "sameAs": [
+      "https://github.com/Iampapay",
+      "https://www.linkedin.com/in/subhadip316"
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-track" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Ambient Futuristic Backdrop -->
+  <div class="bg-grid-backdrop" aria-hidden="true"></div>
+  <div class="ambient-orb orb-cyan" aria-hidden="true"></div>
+  <div class="ambient-orb orb-indigo" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       1. STICKY GLASS NAVBAR
+       ========================================================================= -->
+  <header class="site-header" role="banner">
+    <nav class="nav-shell" aria-label="Primary Navigation">
+      <a href="#hero" class="brand-logo" aria-label="Subhadip Betal Home">
+        <span class="brand-mark">SB</span>
+        <span>Subhadip<span style="color:var(--accent-bright);">.dev</span></span>
+        <span class="brand-status-dot" title="Available for projects"></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="icon-btn theme-toggle" id="theme-toggle-btn" aria-label="Toggle color theme" data-magnetic>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-sm" data-open-modal="deploy-kit-modal" data-magnetic title="View GitHub Pages Deploy Guide &amp; Customization">
+          <span>Deploy Kit</span>
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm" data-magnetic>
+          <span>Hire Me</span>
+        </a>
+
+        <button type="button" class="icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer" role="region" aria-label="Mobile Navigation Menu">
+      <ul class="mobile-nav-list">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="#contact" class="btn btn-primary btn-sm" style="flex:1;">Hire Me</a>
+        <button type="button" class="btn btn-secondary btn-sm" style="flex:1;" data-open-modal="resume-preview-modal">View Resume</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- =======================================================================
+         2. HERO SECTION
+         ======================================================================= -->
+    <section id="hero" class="hero-section">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Hero Left Column -->
+          <div class="hero-copy">
+            <div class="availability-pill">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <span>Associate Software Developer @ Arctwist • Kolkata, IN</span>
+            </div>
+
+            <h1 class="hero-title">
+              Hi, I'm <span class="gradient-text">Subhadip Betal</span>
+            </h1>
+
+            <div class="hero-role-line" aria-live="polite">
+              <span>Building the web as a</span>
+              <span class="typing-wrapper">
+                <span id="rotating-role-text">Web Developer</span>
+                <span class="typing-cursor" aria-hidden="true"></span>
+              </span>
+            </div>
+
+            <p class="hero-pitch">
+              Software developer who builds innovative web solutions, loves collaborating with talented teams, tackling challenging projects and learning emerging technologies. Crafting production-grade platforms with <strong>PHP, Laravel, MySQL, JavaScript, jQuery, and Bootstrap</strong> since November 2022.
+            </p>
+
+            <div class="hero-cta-row">
+              <a href="#projects" class="btn btn-primary" data-magnetic>
+                <span>View Projects</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+
+              <a href="assets/resume.pdf" download="Subhadip_Betal_Resume.pdf" class="btn btn-secondary" data-magnetic>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download Resume</span>
+              </a>
+
+              <button type="button" class="btn btn-secondary" data-open-modal="resume-preview-modal" data-magnetic>
+                <span>Quick Resume View</span>
+              </button>
+            </div>
+
+            <div class="hero-socials-row" aria-label="Social and Contact Links">
+              <a href="https://github.com/Iampapay" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="GitHub profile Iampapay">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>github.com/Iampapay</span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/subhadip316" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="LinkedIn profile subhadip316">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                <span>in/subhadip316</span>
+              </a>
+
+              <a href="mailto:subhadipbetal316@gmail.com" class="social-pill" aria-label="Send email to subhadipbetal316@gmail.com">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span>subhadipbetal316@gmail.com</span>
+              </a>
+
+              <a href="tel:+917908435173" class="social-pill" aria-label="Call +91 7908435173">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>+91 7908435173</span>
+              </a>
+            </div>
+
+            <a href="#about" class="scroll-indicator" aria-label="Scroll down to About section">
+              <span class="scroll-mouse" aria-hidden="true"><span class="scroll-wheel"></span></span>
+              <span>Scroll to explore architecture</span>
+            </a>
+          </div>
+
+          <!-- Hero Right Column: Interactive Portrait Showcase -->
+          <div class="hero-visual-card tilt-card">
+            <div class="hero-photo-frame">
+              <img id="hero-portrait-img" src="assets/images/profile-studio.jpg" alt="Portrait of Subhadip Betal, Associate Software Developer" width="720" height="900">
+              <div class="photo-hud-top">
+                <span class="hud-badge">SUBHADIP BETAL</span>
+                <span class="hud-badge" style="color:#22d3ee;">KOLKATA • IN</span>
+              </div>
+            </div>
+
+            <div class="photo-switcher-bar">
+              <span class="photo-caption-text" id="hero-photo-caption">Studio Portrait • Kolkata, IN</span>
+              <div class="photo-switch-btns" role="group" aria-label="Switch portrait photo">
+                <button type="button" class="photo-switch-btn active" data-photo-src="assets/images/profile-studio.jpg" data-photo-caption="Studio Portrait • Kolkata, IN">Studio</button>
+                <button type="button" class="photo-switch-btn" data-photo-src="assets/images/profile-candid.jpg" data-photo-caption="Candid Office • Arctwist Tech">Candid</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Metrics Counter Row -->
+        <div class="metrics-strip">
+          <div class="metric-card tilt-card">
+            <div class="metric-value" data-counter-target="3" data-counter-suffix="+" data-counter-decimals="0">3+</div>
+            <div class="metric-label">Years in Production</div>
+            <div class="metric-sub">At Arctwist Technology Solutions since Nov 2022</div>
+          </div>
+          <div class="metric-card tilt-card">
+            <div class="metric-value" data-counter-target="87.9" data-counter-suffix="%" data-counter-decimals="1">87.9%</div>
+            <div class="metric-label">MCA Academic Score</div>
+            <div class="metric-sub">Calcutta Institute of Technology</div>
+          </div>
+          <div class="metric-card tilt-card">
+            <div class="metric-value" data-counter-target="14" data-counter-suffix="+" data-counter-decimals="0">14+</div>
+            <div class="metric-label">Core Technologies</div>
+            <div class="metric-sub">Laravel, PHP, MySQL, JS, jQuery, Ajax &amp; Git</div>
+          </div>
+          <div class="metric-card tilt-card">
+            <div class="metric-value" data-counter-target="3" data-counter-suffix="" data-counter-decimals="0">3</div>
+            <div class="metric-label">Flagship Web Systems</div>
+            <div class="metric-sub">ByteGuide-Master, CartWonders &amp; NarrativeNest</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         3. ABOUT ME SECTION
+         ======================================================================= -->
+    <section id="about" class="gsap-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">01 / About Me</span>
+          <h2 class="section-title">Engineering Reliable Web Systems with <span class="gradient-text">Precision &amp; Empathy</span></h2>
+          <p class="section-subtitle">
+            Combining clean backend architecture in PHP &amp; Laravel with responsive front-end craftsmanship.
+          </p>
+        </div>
+
+        <div class="about-bento">
+          <!-- Left: Dual Portrait Gallery Card -->
+          <div class="glass-card about-portrait-card tilt-card">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                <span style="font-family:var(--font-mono);font-size:0.76rem;color:var(--accent-bright);">// PHOTOGRAPHER'S VIEWFINDER</span>
+                <span class="chip">Rajarhat, Kolkata</span>
+              </div>
+
+              <div class="about-photo-grid">
+                <div class="portrait-tile">
+                  <img src="assets/images/profile-studio.jpg" alt="Subhadip Betal studio portrait wearing glasses and blazer" loading="lazy" width="360" height="450">
+                  <div class="portrait-tile-tag">01 • Studio Frame</div>
+                </div>
+                <div class="portrait-tile">
+                  <img src="assets/images/profile-candid.jpg" alt="Subhadip Betal candid portrait in modern office" loading="lazy" width="360" height="450">
+                  <div class="portrait-tile-tag">02 • Candid Frame</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:0.85rem;">
+                When I'm away from my code editor, you'll find me framing street &amp; portrait shots with my camera or sharpening my reflexes at the table tennis table.
+              </p>
+              <div class="chip-list">
+                <span class="chip">📸 Photography</span>
+                <span class="chip">🏓 Table Tennis</span>
+                <span class="chip">🌏 Kolkata, West Bengal</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Bio + Quick Facts Bento -->
+          <div class="glass-card tilt-card">
+            <p class="about-Lead">
+              I'm Subhadip Betal, an Associate Software Developer at Arctwist Technology Solutions (Rajarhat, Kolkata) since November 2022.
+            </p>
+            <p class="about-body-text">
+              I build innovative web solutions, love collaborating with talented teams, tackling challenging projects, and learning emerging technologies. Over the past three-plus years, I've focused on designing clean relational databases in MySQL, developing secure MVC backends in PHP &amp; Laravel, and creating fast, asynchronous user interfaces with JavaScript, jQuery, Ajax, and Bootstrap.
+            </p>
+
+            <div class="quick-facts-grid">
+              <div class="fact-box">
+                <div class="fact-label">Location &amp; Base</div>
+                <div class="fact-value">Kolkata, West Bengal, India</div>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">Rajarhat IT Hub • Open to Remote &amp; Hybrid</div>
+              </div>
+
+              <div class="fact-box">
+                <div class="fact-label">Spoken Languages</div>
+                <div class="chip-list">
+                  <span class="chip">Bengali</span>
+                  <span class="chip">English</span>
+                  <span class="chip">Hindi</span>
+                </div>
+              </div>
+
+              <div class="fact-box">
+                <div class="fact-label">Core Interests</div>
+                <div class="chip-list">
+                  <span class="chip">Web development</span>
+                  <span class="chip">Mobile development</span>
+                  <span class="chip">APIs</span>
+                  <span class="chip">Cloud computing</span>
+                </div>
+              </div>
+
+              <div class="fact-box">
+                <div class="fact-label">Hobbies &amp; Recharge</div>
+                <div class="chip-list">
+                  <span class="chip">Photography</span>
+                  <span class="chip">Table tennis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         4. SKILLS SECTION (Frontend, Backend, Tools + Orbiting Radar + Soft Skills)
+         ======================================================================= -->
+    <section id="skills" class="gsap-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">02 / Technical Arsenal &amp; Soft Skills</span>
+          <h2 class="section-title">Full-Stack Craftsmanship Across <span class="gradient-text">Frontend, Backend &amp; DevOps</span></h2>
+          <p class="section-subtitle">
+            Grouped proficiency across my daily production stack, paired with the collaborative habits that keep teams shipping smoothly.
+          </p>
+        </div>
+
+        <div class="skills-top-layout">
+          <!-- Grouped Skill Progress Bars -->
+          <div class="skills-groups-grid">
+            <!-- Frontend -->
+            <div class="glass-card tilt-card">
+              <div class="skill-group-header">
+                <h3 class="skill-group-title">
+                  <span style="color:var(--accent-bright);">01.</span> Frontend Engineering
+                </h3>
+                <span class="chip">6 Technologies</span>
+              </div>
+              <div class="skill-bars-grid">
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">HTML</span><span class="skill-pct">95%</span></div>
+                  <div class="skill-detail">Semantic HTML5, SEO &amp; Accessibility</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="95"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">CSS</span><span class="skill-pct">92%</span></div>
+                  <div class="skill-detail">Modern Grid, Flexbox &amp; Responsive UI</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="92"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">JavaScript</span><span class="skill-pct">88%</span></div>
+                  <div class="skill-detail">ES6+, DOM Logic &amp; Interactive State</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="88"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">Bootstrap</span><span class="skill-pct">94%</span></div>
+                  <div class="skill-detail">Rapid Mobile-First Component Systems</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="94"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">jQuery</span><span class="skill-pct">92%</span></div>
+                  <div class="skill-detail">DOM Orchestration &amp; Event Handling</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="92"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">Ajax</span><span class="skill-pct">90%</span></div>
+                  <div class="skill-detail">Asynchronous JSON &amp; Zero-Reload UX</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="90"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Backend & Database -->
+            <div class="glass-card tilt-card">
+              <div class="skill-group-header">
+                <h3 class="skill-group-title">
+                  <span style="color:var(--accent-bright);">02.</span> Backend &amp; Database Architecture
+                </h3>
+                <span class="chip">4 Technologies</span>
+              </div>
+              <div class="skill-bars-grid">
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">PHP</span><span class="skill-pct">92%</span></div>
+                  <div class="skill-detail">OOP, Session Security &amp; Server Logic</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="92"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">Laravel</span><span class="skill-pct">94%</span></div>
+                  <div class="skill-detail">MVC, Eloquent ORM, Auth &amp; REST APIs</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="94"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">Composer</span><span class="skill-pct">88%</span></div>
+                  <div class="skill-detail">PHP Dependency &amp; Package Management</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="88"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">MySQL</span><span class="skill-pct">91%</span></div>
+                  <div class="skill-detail">Relational Schema Design &amp; Query Tuning</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="91"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tools & Workflow -->
+            <div class="glass-card tilt-card">
+              <div class="skill-group-header">
+                <h3 class="skill-group-title">
+                  <span style="color:var(--accent-bright);">03.</span> Version Control &amp; Agile Tools
+                </h3>
+                <span class="chip">4 Tools</span>
+              </div>
+              <div class="skill-bars-grid">
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">Git</span><span class="skill-pct">91%</span></div>
+                  <div class="skill-detail">Branching, Merging &amp; Release Tagging</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="91"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">GitHub</span><span class="skill-pct">92%</span></div>
+                  <div class="skill-detail">Pull Requests, Code Reviews &amp; Pages</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="92"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">Jira</span><span class="skill-pct">87%</span></div>
+                  <div class="skill-detail">Agile Sprints, Kanban &amp; Issue Tracking</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="87"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-top"><span class="skill-name">Bitbucket</span><span class="skill-pct">88%</span></div>
+                  <div class="skill-detail">Team Git Repositories &amp; Workflows</div>
+                  <div class="skill-progress-track"><div class="skill-progress-fill" data-skill-level="88"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Orbiting Skill Constellation Card -->
+          <div class="glass-card orbit-card tilt-card">
+            <div>
+              <span class="section-eyebrow" style="margin-bottom:0.5rem;">Interactive Stack Orbit</span>
+              <h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:0.4rem;">14 Core Technologies</h3>
+              <p style="font-size:0.86rem;color:var(--text-secondary);">
+                Inner ring: Backend Core • Middle ring: UI &amp; Async • Outer ring: DevOps &amp; Agile
+              </p>
+            </div>
+
+            <div class="orbit-canvas-wrap">
+              <canvas id="skill-orbit-canvas" aria-label="Animated orbital diagram of Subhadip Betal's 14 technical skills"></canvas>
+            </div>
+
+            <div style="width:100%;text-align:left;background:var(--bg-secondary);padding:1rem;border-radius:var(--radius-md);border:1px solid var(--border-subtle);">
+              <div style="font-family:var(--font-mono);font-size:0.74rem;color:var(--accent-bright);margin-bottom:0.35rem;">// EMERGING FOCUS AREAS</div>
+              <div class="chip-list">
+                <span class="chip">Web development</span>
+                <span class="chip">Mobile development</span>
+                <span class="chip">RESTful APIs</span>
+                <span class="chip">Cloud computing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills Row -->
+        <div class="soft-skills-grid">
+          <div class="soft-skill-card tilt-card">
+            <div class="soft-skill-icon" aria-hidden="true">🎯</div>
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:0.35rem;">Consistency</h3>
+            <p style="font-size:0.88rem;color:var(--text-secondary);">Delivering clean, maintainable code and meeting sprint commitments reliably across long-term product roadmaps.</p>
+          </div>
+          <div class="soft-skill-card tilt-card">
+            <div class="soft-skill-icon" aria-hidden="true">💬</div>
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:0.35rem;">Communication</h3>
+            <p style="font-size:0.88rem;color:var(--text-secondary);">Translating complex client requirements into clear database schemas, API contracts, and user-friendly interfaces.</p>
+          </div>
+          <div class="soft-skill-card tilt-card">
+            <div class="soft-skill-icon" aria-hidden="true">🧭</div>
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:0.35rem;">Leadership</h3>
+            <p style="font-size:0.88rem;color:var(--text-secondary);">Taking ownership of critical production features, architecting modules proactively, and supporting teammates.</p>
+          </div>
+          <div class="soft-skill-card tilt-card">
+            <div class="soft-skill-icon" aria-hidden="true">🤝</div>
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:0.35rem;">Teamwork</h3>
+            <p style="font-size:0.88rem;color:var(--text-secondary);">Thriving in collaborative agile environments alongside designers, backend engineers, and QA specialists.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         5. EXPERIENCE SECTION (Vertical Animated Timeline)
+         ======================================================================= -->
+    <section id="experience" class="gsap-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">03 / Career Timeline</span>
+          <h2 class="section-title">Production Engineering <span class="gradient-text">Experience</span></h2>
+          <p class="section-subtitle">
+            Building and scaling real-world web platforms in Rajarhat, Kolkata since November 2022.
+          </p>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-spine" aria-hidden="true">
+            <div class="timeline-spine-fill"></div>
+          </div>
+
+          <article class="timeline-item glass-card tilt-card">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Associate Software Developer</h3>
+                <div class="timeline-company">Arctwist Technology Solutions • Rajarhat, Kolkata</div>
+              </div>
+              <span class="timeline-meta">Nov 2022 – Present</span>
+            </div>
+
+            <p style="color:var(--text-secondary);">
+              Full-stack engineering of custom web applications, eCommerce platforms, and educational management systems for enterprise clients.
+            </p>
+
+            <ul class="timeline-bullets">
+              <li>Architect, develop, and maintain full-stack web solutions using <strong>PHP, Laravel, and MySQL</strong>, designing normalized relational schemas and clean MVC controllers.</li>
+              <li>Build responsive, mobile-first front-end interfaces with <strong>HTML5, CSS3, Bootstrap, JavaScript, jQuery, and Ajax</strong> for smooth, zero-reload user journeys.</li>
+              <li>Design and integrate RESTful APIs and third-party messaging webhooks, including automated <strong>WhatsApp API</strong> broadcasts for student placement notifications.</li>
+              <li>Collaborate across agile engineering workflows using <strong>Git, GitHub, Bitbucket, and Jira</strong> for sprint planning, peer code reviews, and issue resolution.</li>
+            </ul>
+
+            <div class="chip-list">
+              <span class="chip">Laravel</span>
+              <span class="chip">PHP</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">jQuery</span>
+              <span class="chip">Ajax</span>
+              <span class="chip">Bootstrap</span>
+              <span class="chip">Composer</span>
+              <span class="chip">Git &amp; Bitbucket</span>
+              <span class="chip">Jira</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         6. PROJECTS SECTION (Filterable 3D Tilt Grid + Interactive Previews)
+         ======================================================================= -->
+    <section id="projects" class="gsap-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">04 / Featured Work</span>
+          <h2 class="section-title">Production Systems &amp; <span class="gradient-text">Full-Stack Projects</span></h2>
+          <p class="section-subtitle">
+            Filter by technology stack or inspect the system architecture and live deployments below.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-bar" role="group" aria-label="Filter projects by category">
+          <button type="button" class="filter-btn active" data-filter="all">All Projects (3)</button>
+          <button type="button" class="filter-btn" data-filter="laravel">Laravel &amp; Bootstrap (2)</button>
+          <button type="button" class="filter-btn" data-filter="php">Core PHP &amp; CMS (1)</button>
+          <button type="button" class="filter-btn" data-filter="ecommerce">eCommerce (1)</button>
+          <button type="button" class="filter-btn" data-filter="live">Live Production + WhatsApp API (1)</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: ByteGuide-Master -->
+          <article class="glass-card project-card tilt-card" data-categories="laravel,live">
+            <div>
+              <div class="project-preview-window">
+                <div class="browser-chrome">
+                  <div class="browser-dots"><span></span><span></span><span></span></div>
+                  <span class="browser-url">cineteq.in/cineteq/login</span>
+                </div>
+                <div class="mockup-canvas">
+                  <div class="mockup-row" style="justify-content:space-between;">
+                    <span class="mockup-pill">ERP • Institute Portal</span>
+                    <span class="mockup-pill" style="color:var(--accent-emerald);">● WhatsApp API Active</span>
+                  </div>
+                  <div class="mockup-metric-grid">
+                    <div class="mockup-mini-box">Batches<strong>Active</strong></div>
+                    <div class="mockup-mini-box">Faculty<strong>Synced</strong></div>
+                    <div class="mockup-mini-box">Placement<strong>Alerts</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-period">Jun 2023 – Present • Live Production</div>
+              <h3 class="project-title">ByteGuide-Master</h3>
+              <div class="project-subtitle">Training Institute Management System</div>
+              <p class="project-desc">
+                Manages faculty, batches, courses and students, and sends placement opportunity messages through an integrated WhatsApp API.
+              </p>
+
+              <div class="chip-list" style="margin-bottom:1.1rem;">
+                <span class="chip">Bootstrap</span>
+                <span class="chip">jQuery</span>
+                <span class="chip">Laravel</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">WhatsApp API</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://cineteq.in/cineteq/login" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <span>Live Portal ↗</span>
+              </a>
+              <button type="button" class="btn btn-secondary btn-sm" data-project-modal="byteguide-master">
+                <span>Architecture</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 2: CartWonders -->
+          <article class="glass-card project-card tilt-card" data-categories="laravel,ecommerce">
+            <div>
+              <div class="project-preview-window">
+                <div class="browser-chrome">
+                  <div class="browser-dots"><span></span><span></span><span></span></div>
+                  <span class="browser-url">github.com/Iampapay/CartWonders</span>
+                </div>
+                <div class="mockup-canvas">
+                  <div class="mockup-row" style="justify-content:space-between;">
+                    <span class="mockup-pill">eCommerce Storefront</span>
+                    <span class="mockup-pill">🔒 Secure Checkout</span>
+                  </div>
+                  <div class="mockup-metric-grid">
+                    <div class="mockup-mini-box">Admin<strong>Catalog</strong></div>
+                    <div class="mockup-mini-box">Wishlist<strong>Synced</strong></div>
+                    <div class="mockup-mini-box">Cart<strong>Ajax UI</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-period">Dec 2022 – Present • Full-Stack App</div>
+              <h3 class="project-title">CartWonders</h3>
+              <div class="project-subtitle">Full-Stack eCommerce Platform</div>
+              <p class="project-desc">
+                An eCommerce app where admins add products and users browse, add to cart, use wishlists and check out securely.
+              </p>
+
+              <div class="chip-list" style="margin-bottom:1.1rem;">
+                <span class="chip">Bootstrap</span>
+                <span class="chip">jQuery</span>
+                <span class="chip">Laravel</span>
+                <span class="chip">MySQL</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/Iampapay/CartWonders" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <span>GitHub Repo ↗</span>
+              </a>
+              <button type="button" class="btn btn-secondary btn-sm" data-project-modal="cartwonders">
+                <span>Architecture</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 3: NarrativeNest -->
+          <article class="glass-card project-card tilt-card" data-categories="php">
+            <div>
+              <div class="project-preview-window">
+                <div class="browser-chrome">
+                  <div class="browser-dots"><span></span><span></span><span></span></div>
+                  <span class="browser-url">github.com/Iampapay/NarrativeNest</span>
+                </div>
+                <div class="mockup-canvas">
+                  <div class="mockup-row" style="justify-content:space-between;">
+                    <span class="mockup-pill">Collaborative CMS</span>
+                    <span class="mockup-pill">✍️ Rich Publishing</span>
+                  </div>
+                  <div class="mockup-metric-grid">
+                    <div class="mockup-mini-box">Articles<strong>Editor</strong></div>
+                    <div class="mockup-mini-box">Media<strong>Vault</strong></div>
+                    <div class="mockup-mini-box">Authors<strong>Multi-User</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-period">Apr 2021 – Jun 2021 • Custom CMS</div>
+              <h3 class="project-title">NarrativeNest</h3>
+              <div class="project-subtitle">Collaborative Content Management System</div>
+              <p class="project-desc">
+                A CMS where users create, edit, collaborate on, publish and store articles, blogs and images.
+              </p>
+
+              <div class="chip-list" style="margin-bottom:1.1rem;">
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+                <span class="chip">jQuery</span>
+                <span class="chip">PHP</span>
+                <span class="chip">MySQL</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/Iampapay/NarrativeNest" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <span>GitHub Repo ↗</span>
+              </a>
+              <button type="button" class="btn btn-secondary btn-sm" data-project-modal="narrativenest">
+                <span>Architecture</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         7. EDUCATION SECTION
+         ======================================================================= -->
+    <section id="education" class="gsap-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">05 / Academic Foundation</span>
+          <h2 class="section-title">Education &amp; <span class="gradient-text">Academic Credentials</span></h2>
+          <p class="section-subtitle">
+            Consistent academic progression in Computer Applications, culminating in an 87.9% MCA distinction.
+          </p>
+        </div>
+
+        <div class="education-grid">
+          <article class="glass-card edu-card tilt-card">
+            <div class="edu-score-ring" aria-hidden="true">
+              <svg viewBox="0 0 84 84">
+                <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
+                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="87.9"></circle>
+              </svg>
+              <div class="edu-score-label">87.9%</div>
+            </div>
+            <div>
+              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Master's Degree</span>
+              <h3 class="edu-degree">Master of Computer Applications (MCA)</h3>
+              <div class="edu-school">Calcutta Institute of Technology</div>
+              <p class="edu-detail">Graduated with 87.9% — Advanced Software Engineering, Relational Databases &amp; Web Technologies.</p>
+            </div>
+          </article>
+
+          <article class="glass-card edu-card tilt-card">
+            <div class="edu-score-ring" aria-hidden="true">
+              <svg viewBox="0 0 84 84">
+                <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
+                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="73.67"></circle>
+              </svg>
+              <div class="edu-score-label">73.67%</div>
+            </div>
+            <div>
+              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Bachelor's Degree</span>
+              <h3 class="edu-degree">Bachelor of Computer Applications (BCA)</h3>
+              <div class="edu-school">Mahishadal Raj College</div>
+              <p class="edu-detail">Graduated with 73.67% — Object-Oriented Programming, Data Structures, PHP &amp; MySQL.</p>
+            </div>
+          </article>
+
+          <article class="glass-card edu-card tilt-card">
+            <div class="edu-score-ring" aria-hidden="true">
+              <svg viewBox="0 0 84 84">
+                <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
+                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="63.2"></circle>
+              </svg>
+              <div class="edu-score-label">63.2%</div>
+            </div>
+            <div>
+              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Higher Secondary (12th)</span>
+              <h3 class="edu-degree">Higher Secondary Examination (12th)</h3>
+              <div class="edu-school">Mahishadal Raj High School</div>
+              <p class="edu-detail">Completed Higher Secondary curriculum with 63.2% aggregate score.</p>
+            </div>
+          </article>
+
+          <article class="glass-card edu-card tilt-card">
+            <div class="edu-score-ring" aria-hidden="true">
+              <svg viewBox="0 0 84 84">
+                <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
+                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="69.85"></circle>
+              </svg>
+              <div class="edu-score-label">69.85%</div>
+            </div>
+            <div>
+              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Secondary (10th)</span>
+              <h3 class="edu-degree">Secondary Examination (10th)</h3>
+              <div class="edu-school">Mahishadal Raj High School</div>
+              <p class="edu-detail">Completed Secondary board examination with 69.85% aggregate score.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         8. SERVICES / "WHAT I DO" SECTION
+         ======================================================================= -->
+    <section id="services" class="gsap-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">06 / What I Do</span>
+          <h2 class="section-title">End-to-End Web Engineering <span class="gradient-text">Services</span></h2>
+          <p class="section-subtitle">
+            From database schema design to interactive front-end interfaces and third-party API automation.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="glass-card service-card tilt-card">
+            <div>
+              <div class="service-num">01 // WEB APPS</div>
+              <h3 class="service-title">Custom Web Applications</h3>
+              <p style="font-size:0.9rem;color:var(--text-secondary);">
+                Scalable, responsive web applications built with PHP, Laravel, Bootstrap, jQuery, and Ajax for fast, modern business workflows.
+              </p>
+            </div>
+            <ul class="service-points">
+              <li>Clean Laravel MVC Architecture</li>
+              <li>Responsive Mobile-First UI</li>
+              <li>Zero-Reload Ajax Interactions</li>
+            </ul>
+          </article>
+
+          <article class="glass-card service-card tilt-card">
+            <div>
+              <div class="service-num">02 // REST APIS</div>
+              <h3 class="service-title">REST APIs &amp; Integrations</h3>
+              <p style="font-size:0.9rem;color:var(--text-secondary);">
+                Secure RESTful API endpoints and automated third-party integrations, including WhatsApp Business API messaging pipelines.
+              </p>
+            </div>
+            <ul class="service-points">
+              <li>Structured JSON API Contracts</li>
+              <li>WhatsApp API Alert Automation</li>
+              <li>Authentication &amp; Middleware</li>
+            </ul>
+          </article>
+
+          <article class="glass-card service-card tilt-card">
+            <div>
+              <div class="service-num">03 // E-COMMERCE</div>
+              <h3 class="service-title">E-Commerce Platforms</h3>
+              <p style="font-size:0.9rem;color:var(--text-secondary);">
+                Full-featured online stores with admin product management, dynamic carts, wishlists, and secure checkout experiences.
+              </p>
+            </div>
+            <ul class="service-points">
+              <li>Catalog &amp; Inventory Engine</li>
+              <li>Persistent Cart &amp; Wishlists</li>
+              <li>Secure Checkout Workflows</li>
+            </ul>
+          </article>
+
+          <article class="glass-card service-card tilt-card">
+            <div>
+              <div class="service-num">04 // ADMIN &amp; CMS</div>
+              <h3 class="service-title">Admin Panels &amp; CMS</h3>
+              <p style="font-size:0.9rem;color:var(--text-secondary);">
+                Role-based dashboards, institute ERPs (managing faculty, batches, and students), and collaborative publishing platforms.
+              </p>
+            </div>
+            <ul class="service-points">
+              <li>Multi-Role Access Control</li>
+              <li>Batch, Course &amp; Student ERPs</li>
+              <li>Normalized MySQL Schemas</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         9. TESTIMONIALS SECTION (Easy to edit in js/config.js)
+         ======================================================================= -->
+    <section id="testimonials" class="gsap-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">07 / Collaboration Feedback</span>
+          <h2 class="section-title">What Colleagues &amp; Teams <span class="gradient-text">Say</span></h2>
+          <p class="section-subtitle">
+            Structured in <code>js/config.js</code> for effortless updates as new client and team recommendations arrive.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="glass-card tilt-card">
+            <span class="chip" style="margin-bottom:0.9rem;display:inline-block;">ByteGuide-Master ERP</span>
+            <p class="testimonial-quote">
+              "Subhadip consistently delivers clean, reliable Laravel and MySQL modules. His work on integrating automated WhatsApp placement opportunity alerts transformed how our platform communicates with students."
+            </p>
+            <div class="testimonial-author">Project Delivery Lead</div>
+            <div class="testimonial-role">Enterprise Web Systems • Kolkata</div>
+          </article>
+
+          <article class="glass-card tilt-card">
+            <span class="chip" style="margin-bottom:0.9rem;display:inline-block;">Full-Stack Collaboration</span>
+            <p class="testimonial-quote">
+              "Working with Subhadip on full-stack eCommerce workflows is seamless. He bridges responsive Bootstrap front-ends and relational MySQL integrity with rare consistency and clear communication."
+            </p>
+            <div class="testimonial-author">Senior Engineering Colleague</div>
+            <div class="testimonial-role">Arctwist Technology Solutions</div>
+          </article>
+
+          <article class="glass-card tilt-card">
+            <span class="chip" style="margin-bottom:0.9rem;display:inline-block;">Agile Sprint Delivery</span>
+            <p class="testimonial-quote">
+              "From database schema modeling to interactive jQuery and Ajax interfaces, Subhadip brings strong ownership, calm leadership, and team-first energy to every sprint."
+            </p>
+            <div class="testimonial-author">Product Coordinator</div>
+            <div class="testimonial-role">Web Application Delivery</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         10. CONTACT SECTION
+         ======================================================================= -->
+    <section id="contact" class="gsap-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">08 / Get In Touch</span>
+          <h2 class="section-title">Let's Build Something <span class="gradient-text">Exceptional Together</span></h2>
+          <p class="section-subtitle">
+            Have a full-stack role, Laravel project, or API integration in mind? Reach out directly or send a message below.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Direct Contact Channels -->
+          <div class="glass-card tilt-card">
+            <h3 style="font-family:var(--font-display);font-size:1.35rem;margin-bottom:0.4rem;">Direct Contact Channels</h3>
+            <p style="color:var(--text-secondary);font-size:0.92rem;">
+              Based in <strong>Kolkata, West Bengal, India</strong>. Click any channel below to connect or copy my details.
+            </p>
+
+            <div class="contact-channel-list">
+              <div class="contact-channel-item">
+                <div>
+                  <div class="channel-label">Email Address</div>
+                  <div class="channel-val"><a href="mailto:subhadipbetal316@gmail.com">subhadipbetal316@gmail.com</a></div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" data-copy-value="subhadipbetal316@gmail.com" data-copy-label="email address">Copy</button>
+              </div>
+
+              <div class="contact-channel-item">
+                <div>
+                  <div class="channel-label">Phone / WhatsApp</div>
+                  <div class="channel-val"><a href="tel:+917908435173">+91 7908435173</a></div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" data-copy-value="7908435173" data-copy-label="phone number">Copy</button>
+              </div>
+
+              <div class="contact-channel-item">
+                <div>
+                  <div class="channel-label">LinkedIn Profile</div>
+                  <div class="channel-val"><a href="https://www.linkedin.com/in/subhadip316" target="_blank" rel="noopener noreferrer">linkedin.com/in/subhadip316</a></div>
+                </div>
+                <a href="https://www.linkedin.com/in/subhadip316" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Open ↗</a>
+              </div>
+
+              <div class="contact-channel-item">
+                <div>
+                  <div class="channel-label">GitHub Profile</div>
+                  <div class="channel-val"><a href="https://github.com/Iampapay" target="_blank" rel="noopener noreferrer">github.com/Iampapay</a></div>
+                </div>
+                <a href="https://github.com/Iampapay" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Open ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Working Contact Form -->
+          <div class="glass-card tilt-card">
+            <h3 style="font-family:var(--font-display);font-size:1.35rem;margin-bottom:0.35rem;">Send a Message</h3>
+            <p style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:1.25rem;">
+              Powered by Formspree with real-time validation and direct email fallback.
+            </p>
+
+            <form id="portfolio-contact-form" novalidate>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">Your Name *</label>
+                  <input type="text" id="contact-name" name="name" class="form-control" placeholder="e.g. Aarav Sen" required>
+                  <div class="field-error" id="err-name">Please enter your name (at least 2 characters).</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-email">Your Email *</label>
+                  <input type="email" id="contact-email" name="email" class="form-control" placeholder="name@company.com" required>
+                  <div class="field-error" id="err-email">Please enter a valid email address.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-subject">Subject *</label>
+                <input type="text" id="contact-subject" name="subject" class="form-control" placeholder="Full-Stack Role / Laravel Project Inquiry" required>
+                <div class="field-error" id="err-subject">Please include a brief subject line.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-message">Message *</label>
+                <textarea id="contact-message" name="message" rows="4" class="form-control" placeholder="Tell me about your team, project timeline, or role..." required></textarea>
+                <div class="field-error" id="err-message">Please write a message of at least 10 characters.</div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="contact-submit-btn" style="width:100%;" data-magnetic>
+                <span>Send Message to Subhadip</span>
+              </button>
+
+              <div class="form-status-box" id="contact-status-box" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       11. FOOTER
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>
+        <div style="font-family:var(--font-display);font-weight:700;font-size:1.05rem;">
+          Subhadip Betal <span style="color:var(--accent-bright);">• Associate Software Developer</span>
+        </div>
+        <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">
+          © 2026 Subhadip Betal. Crafted with semantic HTML5, modern CSS &amp; vanilla JS. Local time: <span id="kolkata-live-clock" style="font-family:var(--font-mono);color:var(--text-secondary);">IST</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
+        <a href="https://github.com/Iampapay" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">GitHub</a>
+        <a href="https://www.linkedin.com/in/subhadip316" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">LinkedIn</a>
+        <a href="mailto:subhadipbetal316@gmail.com" class="btn btn-secondary btn-sm">Email</a>
+        <a href="#hero" class="btn btn-primary btn-sm" aria-label="Back to top">↑ Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODALS
+       ========================================================================= -->
+  <div class="modal-backdrop" id="project-arch-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="arch-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="arch-modal-title" style="font-family:var(--font-display);font-size:1.2rem;">Project Architecture</h3>
+        <button type="button" class="btn btn-secondary btn-sm" id="arch-modal-close">Close ✕</button>
+      </div>
+      <div class="modal-body" id="arch-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="resume-preview-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="resume-modal-title" style="font-family:var(--font-display);font-size:1.2rem;">Subhadip Betal — Resume Summary</h3>
+        <div style="display:flex;gap:0.5rem;">
+          <a href="assets/resume.pdf" download="Subhadip_Betal_Resume.pdf" class="btn btn-primary btn-sm">Download PDF ⬇</a>
+          <button type="button" class="btn btn-secondary btn-sm" data-close-modal="resume-preview-modal">Close ✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div style="padding:1.25rem;background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+          <h4 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:0.2rem;">SUBHADIP BETAL</h4>
+          <p style="color:var(--accent-bright);font-weight:600;font-size:0.92rem;margin-bottom:0.5rem;">Associate Software Developer @ Arctwist Technology Solutions (Rajarhat, Kolkata • Nov 2022 – Present)</p>
+          <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:1rem;">Kolkata, West Bengal, India • subhadipbetal316@gmail.com • +91 7908435173 • github.com/Iampapay • linkedin.com/in/subhadip316</p>
+          <hr style="border:none;border-top:1px solid var(--border-subtle);margin:0.85rem 0;">
+          <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.9rem;">
+            <strong>Summary:</strong> Software developer who builds innovative web solutions, loves collaborating with talented teams, tackling challenging projects and learning emerging technologies.
+          </p>
+          <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.9rem;">
+            <strong>Technical Skills:</strong> HTML, CSS, JavaScript, Bootstrap, jQuery, Ajax, PHP, Laravel, Composer, MySQL, Git, GitHub, Jira, Bitbucket.
+          </p>
+          <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.9rem;">
+            <strong>Projects:</strong><br>
+            1. <strong>ByteGuide-Master / Training Institute Management System</strong> (Jun 2023–Present): Laravel, MySQL, jQuery, Bootstrap, WhatsApp API (<a href="https://cineteq.in/cineteq/login" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright);">Live Portal</a>)<br>
+            2. <strong>CartWonders</strong> (Dec 2022–Present): eCommerce app in Bootstrap, jQuery, Laravel, MySQL (<a href="https://github.com/Iampapay/CartWonders" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright);">GitHub Repo</a>)<br>
+            3. <strong>NarrativeNest</strong> (Apr–Jun 2021): CMS in HTML, CSS, jQuery, PHP, MySQL (<a href="https://github.com/Iampapay/NarrativeNest" target="_blank" rel="noopener noreferrer" style="color:var(--accent-bright);">GitHub Repo</a>)
+          </p>
+          <p style="font-size:0.9rem;color:var(--text-secondary);">
+            <strong>Education:</strong> MCA, Calcutta Institute of Technology (87.9%) • BCA, Mahishadal Raj College (73.67%) • 12th, Mahishadal Raj High School (63.2%) • 10th, Mahishadal Raj High School (69.85%).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="deploy-kit-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="deploy-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="deploy-modal-title" style="font-family:var(--font-display);font-size:1.2rem;">GitHub Pages Deployment &amp; Customization Guide</h3>
+        <button type="button" class="btn btn-secondary btn-sm" data-close-modal="deploy-kit-modal">Close ✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-secondary);margin-bottom:1rem;">
+          Everything is structured as a zero-build static site (<code>index.html</code>, <code>css/styles.css</code>, <code>js/config.js</code>, <code>js/main.js</code>, <code>assets/</code>, <code>README.md</code>, <code>sitemap.xml</code>, <code>robots.txt</code>) so it deploys straight to <strong>https://iampapay.github.io</strong>.
+        </p>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h4 style="font-family:var(--font-display);">1. Push to GitHub Pages (<code>Iampapay.github.io</code>)</h4>
+          <button type="button" class="btn btn-secondary btn-sm" data-copy-value="git init&#10;git add .&#10;git commit -m &quot;feat: launch Subhadip Betal portfolio website&quot;&#10;git branch -M main&#10;git remote add origin https://github.com/Iampapay/Iampapay.github.io.git&#10;git push -u origin main" data-copy-label="Git deployment commands">Copy Commands</button>
+        </div>
+        <pre class="code-block-pre">git init
+git add .
+git commit -m "feat: launch Subhadip Betal portfolio website"
+git branch -M main
+git remote add origin https://github.com/Iampapay/Iampapay.github.io.git
+git push -u origin main</pre>
+
+        <h4 style="font-family:var(--font-display);margin-bottom:0.4rem;">2. Quick Customization Guide</h4>
+        <ul style="color:var(--text-secondary);padding-left:1.2rem;display:grid;gap:0.45rem;font-size:0.9rem;">
+          <li><strong>All Text, Projects &amp; Links:</strong> Edit <code>js/config.js</code> (and corresponding static HTML in <code>index.html</code> for SEO).</li>
+          <li><strong>Colors &amp; Fonts:</strong> Edit CSS variables at the top of <code>css/styles.css</code> under <code>:root, [data-theme="dark"]</code> and <code>[data-theme="light"]</code>.</li>
+          <li><strong>Photos &amp; Resume:</strong> Replace <code>assets/images/profile-studio.jpg</code>, <code>assets/images/profile-candid.jpg</code>, or <code>assets/resume.pdf</code>.</li>
+          <li><strong>Working Contact Form:</strong> Paste your free Formspree endpoint URL into <code>formspreeUrl</code> inside <code>js/config.js</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-notification" id="toast-notification" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
