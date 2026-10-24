@@ -806,6 +806,56 @@ section {
   color: #ffffff;
 }
 
+.about-photo-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.45rem 0 1.25rem;
+}
+
+.about-photo-count {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.about-photo-buttons {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.about-photo-button {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  background: var(--surface-pill);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.about-photo-button:hover:not(:disabled) {
+  border-color: var(--border-highlight);
+  background: var(--spotlight-color);
+}
+
+.about-photo-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+@media (max-width: 600px) {
+  .portrait-tile {
+    flex-basis: 90%;
+  }
+}
+
 /* Metrics Counter Strip */
 .metrics-strip {
   margin-top: clamp(2.5rem, 5vw, 4rem);
@@ -947,14 +997,30 @@ section {
 }
 
 .about-photo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  padding-bottom: 0.55rem;
+  touch-action: pan-y;
+  outline: none;
+}
+
+.about-photo-grid:focus-visible {
+  border-radius: var(--radius-md);
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+.about-photo-track {
+  position: relative;
+  display: flex;
   gap: 0.9rem;
-  margin-bottom: 1.25rem;
+  width: 100%;
+  transition: transform 0.5s var(--transition-smooth);
+  will-change: transform;
 }
 
 .portrait-tile {
   position: relative;
+  flex: 0 0 82%;
   border-radius: var(--radius-md);
   overflow: hidden;
   aspect-ratio: 4 / 5;
@@ -1850,6 +1916,302 @@ section {
   opacity: 1;
 }
 
+/* ==========================================================================
+   PHOTOGRAPHER'S VIEWFINDER — HORIZONTAL SCROLLABLE GALLERY CAROUSEL
+   ========================================================================== */
+.gallery-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.gallery-title-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.viewfinder-rec-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
+  animation: recPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes recPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.82); }
+}
+
+.gallery-header-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gallery-counter {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-bright);
+  padding: 0.22rem 0.58rem;
+  border-radius: var(--radius-full);
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-accent);
+  letter-spacing: 0.06em;
+}
+
+.about-gallery-frame {
+  position: relative;
+  padding: 0.85rem;
+  border-radius: calc(var(--radius-md) + 4px);
+  background: linear-gradient(160deg, rgba(8, 13, 26, 0.78), rgba(15, 23, 42, 0.52));
+  border: 1px solid var(--border-subtle);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 14px 32px -14px rgba(0, 0, 0, 0.45);
+  margin-bottom: 1.15rem;
+  overflow: hidden;
+}
+
+[data-theme="light"] .about-gallery-frame {
+  background: linear-gradient(160deg, rgba(241, 245, 249, 0.92), rgba(226, 232, 240, 0.65));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 12px 26px -12px rgba(15, 23, 42, 0.12);
+}
+
+/* Camera Viewfinder Corner Brackets */
+.vf-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--accent-bright);
+  opacity: 0.65;
+  pointer-events: none;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+}
+.about-gallery-frame:hover .vf-corner { opacity: 1; }
+.vf-tl { top: 7px; left: 7px; border-top: 2px solid; border-left: 2px solid; border-top-left-radius: 4px; }
+.vf-tr { top: 7px; right: 7px; border-top: 2px solid; border-right: 2px solid; border-top-right-radius: 4px; }
+.vf-bl { bottom: 48px; left: 7px; border-bottom: 2px solid; border-left: 2px solid; border-bottom-left-radius: 4px; }
+.vf-br { bottom: 48px; right: 7px; border-bottom: 2px solid; border-right: 2px solid; border-bottom-right-radius: 4px; }
+
+/* Horizontal Scrollable Carousel Track */
+.photo-carousel-track {
+  display: flex;
+  gap: 0.9rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.15rem 0.15rem 0.65rem;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-accent) transparent;
+}
+
+.photo-carousel-track:active,
+.photo-carousel-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.photo-carousel-track::-webkit-scrollbar { height: 5px; }
+.photo-carousel-track::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.08);
+  border-radius: 999px;
+}
+.photo-carousel-track::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+  border-radius: 999px;
+}
+
+/* Individual Gallery Frame Slide (~1.25 cards visible so users see it scrolls) */
+.photo-carousel-track .portrait-tile.carousel-slide {
+  flex: 0 0 88%;           
+  max-width: 440px;        
+  aspect-ratio: 16 / 10;
+  scroll-snap-align: start;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  margin: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease,
+              box-shadow 0.45s ease;
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide.is-active {
+  border-color: var(--border-accent);
+  box-shadow: 0 12px 28px -10px rgba(6, 182, 212, 0.28);
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  pointer-events: none;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 640px) {
+  .photo-carousel-track .portrait-tile.carousel-slide {
+    flex: 0 0 92%;         
+    aspect-ratio: 16 / 10; 
+    max-width: none;
+  }
+}
+
+/* EXIF Metadata Pill */
+.portrait-exif-badge {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 2;
+  padding: 0.22rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: rgba(6, 10, 21, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: rgba(241, 245, 249, 0.9);
+}
+
+/* Bottom Frame Caption Tag */
+.photo-carousel-track .portrait-tile-tag {
+  position: absolute;
+  bottom: 0.65rem;
+  left: 0.65rem;
+  right: 0.65rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.68rem;
+  border-radius: 10px;
+  background: rgba(6, 10, 21, 0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-family: var(--font-mono);
+  font-size: 0.71rem;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.photo-carousel-track .portrait-tile-tag .frame-num {
+  color: var(--accent-bright);
+  font-weight: 700;
+  padding-right: 0.4rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Bottom Controls Bar */
+.gallery-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.55rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.gallery-nav-buttons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gallery-nav-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.gallery-nav-btn:hover:not(:disabled) {
+  border-color: var(--border-accent);
+  color: var(--accent-bright);
+  transform: translateY(-1px);
+}
+
+.gallery-nav-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.gallery-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.gallery-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  padding: 0;
+  border: none;
+  background: var(--text-muted);
+  opacity: 0.38;
+  cursor: pointer;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.gallery-dot.is-active {
+  width: 20px;
+  opacity: 1;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.gallery-drag-hint {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.about-Lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .photo-carousel-track .portrait-tile.carousel-slide {
+    flex: 0 0 84%;
+    max-width: none;
+  }
+  .gallery-drag-hint { display: none; }
+}
+
 /* ============================================================================
  * 13. RESPONSIVE BREAKPOINTS & REDUCED MOTION
  * ============================================================================ */
@@ -1872,13 +2234,46 @@ section {
   .soft-skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
+@media (max-width: 1199px) {
   .nav-links {
     display: none;
   }
 
   .mobile-menu-btn {
     display: inline-flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding-right: 0.65rem;
+    padding-left: 0.65rem;
+  }
+
+  .nav-shell {
+    gap: 0.5rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .brand-logo {
+    gap: 0.45rem;
+    font-size: 1rem;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    font-size: 0.84rem;
+  }
+
+  .nav-actions {
+    gap: 0.35rem;
+  }
+
+  .nav-actions > .btn {
+    display: none;
   }
 }
 
@@ -1915,6 +2310,11 @@ section {
 @media (max-width: 420px) {
   .hero-cta-row .btn {
     width: 100%;
+  }
+
+  .nav-shell {
+    padding-right: 0.55rem;
+    padding-left: 0.55rem;
   }
 
   .mobile-nav-list {

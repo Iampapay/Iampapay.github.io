@@ -1,0 +1,973 @@
+/**
+ * ============================================================================
+ * SUBHADIP BETAL — PREMIUM MOTION DESIGN & MICRO-INTERACTIONS (animations.css)
+ * ============================================================================
+ * Drop-in stylesheet designed for the existing portfolio HTML structure.
+ *
+ * Usage:
+ *   Include right after css/styles.css in index.html:
+ *   <link rel="stylesheet" href="css/animations.css">
+ *
+ * Design Principles:
+ *   - Natural spring & cubic-bezier easing (no jarring linear or bouncy motion)
+ *   - Hardware-accelerated transforms & opacity (60fps rendering)
+ *   - Staggered reveal choreography with short, responsive delays (<= 350ms)
+ *   - Refined depth, glass luminescence, and tactile hover micro-interactions
+ *   - Full accessibility compliance with @media (prefers-reduced-motion: reduce)
+ * ============================================================================
+ */
+
+/* --------------------------------------------------------------------------
+ * 1. MOTION DESIGN TOKENS & EASING CURVES
+ * -------------------------------------------------------------------------- */
+:root {
+  /* Custom Cubic-Bezier & Spring-Like Easing Curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring-soft: cubic-bezier(0.34, 1.38, 0.64, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Controlled Durations */
+  --dur-instant: 160ms;
+  --dur-fast: 260ms;
+  --dur-normal: 420ms;
+  --dur-slow: 680ms;
+  --dur-reveal: 720ms;
+
+  /* Stagger Step */
+  --stagger-step: 65ms;
+
+  /* Depth & Elevation Shadows (Dark Theme Default) */
+  --shadow-elevated: 0 22px 48px -12px rgba(2, 6, 23, 0.68),
+                     0 0 28px -6px rgba(6, 182, 212, 0.18);
+  --shadow-card-rest: 0 10px 30px -10px rgba(2, 6, 23, 0.45);
+  --shadow-btn-hover: 0 12px 28px -6px rgba(6, 182, 212, 0.38),
+                      0 4px 12px -2px rgba(99, 102, 241, 0.28);
+  --glow-border-accent: rgba(34, 211, 238, 0.42);
+}
+
+[data-theme="light"] {
+  --shadow-elevated: 0 22px 44px -12px rgba(15, 23, 42, 0.12),
+                     0 0 24px -6px rgba(2, 132, 199, 0.14);
+  --shadow-card-rest: 0 8px 24px -8px rgba(15, 23, 42, 0.06);
+  --shadow-btn-hover: 0 12px 26px -6px rgba(2, 132, 199, 0.32),
+                      0 4px 12px -2px rgba(79, 70, 229, 0.22);
+  --glow-border-accent: rgba(2, 132, 199, 0.38);
+}
+
+/* Smooth theme transition across structural surfaces */
+body,
+.nav-shell,
+.glass-card,
+.metric-card,
+.fact-box,
+.skill-item,
+.soft-skill-card,
+.edu-card,
+.service-card,
+.contact-channel-item,
+.form-control,
+.chip,
+.social-pill,
+.site-footer {
+  transition:
+    background-color var(--dur-normal) var(--ease-out-quart),
+    border-color var(--dur-normal) var(--ease-out-quart),
+    color var(--dur-fast) var(--ease-out-quart),
+    box-shadow var(--dur-normal) var(--ease-out-quart);
+}
+
+/* --------------------------------------------------------------------------
+ * 2. KEYFRAME DEFINITIONS (Subtle, Organic & Non-Distracting)
+ * -------------------------------------------------------------------------- */
+@keyframes heroEntranceFadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes heroVisualEntrance {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ambientOrbDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -14px, 0) scale(1.04);
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes pulseRingSubtle {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes timelineDotPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px var(--accent-soft), 0 0 12px rgba(34, 211, 238, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 7px var(--accent-soft), 0 0 20px rgba(34, 211, 238, 0.6);
+  }
+}
+
+@keyframes skillBarSheen {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@keyframes sectionTargetHighlight {
+  0% {
+    box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.35);
+  }
+  100% {
+    box-shadow: inset 0 0 0 1px transparent;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * 3. STICKY NAVBAR SCROLL ANIMATION & LINK MICRO-INTERACTIONS
+ * -------------------------------------------------------------------------- */
+.site-header {
+  transition:
+    padding var(--dur-normal) var(--ease-out-quart),
+    transform var(--dur-normal) var(--ease-out-quart);
+}
+
+.nav-shell {
+  transition:
+    height var(--dur-normal) var(--ease-out-quart),
+    padding var(--dur-normal) var(--ease-out-quart),
+    background var(--dur-normal) var(--ease-out-quart),
+    border-color var(--dur-normal) var(--ease-out-quart),
+    box-shadow var(--dur-normal) var(--ease-out-quart),
+    backdrop-filter var(--dur-normal) var(--ease-out-quart);
+}
+
+/* Elevated, condensed state when scrolling down */
+.site-header.is-scrolled {
+  padding-top: 0.45rem;
+}
+
+.site-header.is-scrolled .nav-shell {
+  height: 3.7rem;
+  backdrop-filter: blur(22px) saturate(185%);
+  -webkit-backdrop-filter: blur(22px) saturate(185%);
+  border-color: var(--glow-border-accent);
+  box-shadow: 0 16px 38px -10px rgba(2, 6, 23, 0.55),
+              0 0 22px -8px rgba(6, 182, 212, 0.22);
+}
+
+[data-theme="light"] .site-header.is-scrolled .nav-shell {
+  box-shadow: 0 14px 34px -10px rgba(15, 23, 42, 0.12),
+              0 0 18px -8px rgba(2, 132, 199, 0.15);
+}
+
+/* Brand mark subtle hover rotation & glow */
+.brand-logo .brand-mark {
+  transition:
+    transform var(--dur-normal) var(--ease-spring-soft),
+    box-shadow var(--dur-normal) var(--ease-out-quart);
+}
+
+.brand-logo:hover .brand-mark {
+  transform: translateY(-1px) scale(1.06) rotate(-4deg);
+  box-shadow: 0 0 24px rgba(6, 182, 212, 0.55);
+}
+
+/* Navigation links with animated underline indicator */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+  transition:
+    color var(--dur-fast) var(--ease-out-quart),
+    background-color var(--dur-fast) var(--ease-out-quart),
+    transform var(--dur-fast) var(--ease-out-quart);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.28rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--gradient-brand);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-normal) var(--ease-out-expo),
+              opacity var(--dur-fast) var(--ease-out-quart);
+  opacity: 0;
+}
+
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Theme toggle icon rotation feedback */
+.theme-toggle-btn svg {
+  transition: transform var(--dur-normal) var(--ease-spring-soft);
+}
+
+.theme-toggle-btn:hover svg {
+  transform: rotate(18deg) scale(1.1);
+}
+
+/* Mobile drawer smooth slide & fade */
+.mobile-nav-drawer {
+  transform-origin: top center;
+  transition:
+    opacity var(--dur-normal) var(--ease-out-quart),
+    transform var(--dur-normal) var(--ease-out-expo);
+}
+
+/* --------------------------------------------------------------------------
+ * 4. HERO SECTION CHOREOGRAPHY & AMBIENT BACKGROUND MOTION
+ * -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+}
+
+/* Soft ambient floating gradient aura behind hero content */
+.hero-section::before,
+.hero-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(68px);
+  opacity: 0.42;
+  animation: ambientOrbDrift 18s var(--ease-in-out-smooth) infinite;
+}
+
+.hero-section::before {
+  width: 340px;
+  height: 340px;
+  top: 8%;
+  left: -4%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.22), transparent 70%);
+}
+
+.hero-section::after {
+  width: 380px;
+  height: 380px;
+  bottom: 6%;
+  right: -4%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2), transparent 70%);
+  animation-delay: -9s;
+}
+
+/* Staggered Hero Entrance Choreography */
+.hero-section .availability-pill {
+  animation: heroEntranceFadeUp 0.65s var(--ease-out-expo) 0.05s both;
+}
+
+.hero-section .availability-dot {
+  animation: pulseRingSubtle 2.4s infinite;
+}
+
+.hero-section .hero-title {
+  animation: heroEntranceFadeUp 0.72s var(--ease-out-expo) 0.12s both;
+}
+
+.hero-section .hero-role-line {
+  animation: heroEntranceFadeUp 0.72s var(--ease-out-expo) 0.2s both;
+}
+
+.hero-section .hero-pitch {
+  animation: heroEntranceFadeUp 0.72s var(--ease-out-expo) 0.28s both;
+}
+
+.hero-section .hero-cta-row {
+  animation: heroEntranceFadeUp 0.72s var(--ease-out-expo) 0.35s both;
+}
+
+.hero-section .hero-socials-row {
+  animation: heroEntranceFadeUp 0.72s var(--ease-out-expo) 0.42s both;
+}
+
+.hero-section .hero-visual-card {
+  animation: heroVisualEntrance 0.85s var(--ease-out-expo) 0.22s both;
+}
+
+/* Subtle floating badge on hero portrait */
+.hero-floating-badge {
+  animation: subtleFloat 5.5s var(--ease-in-out-smooth) infinite;
+}
+
+/* Hero portrait smooth zoom on card hover */
+.hero-portrait-frame {
+  overflow: hidden;
+}
+
+.hero-portrait-frame img {
+  transition:
+    transform 0.75s var(--ease-out-expo),
+    opacity 0.25s var(--ease-out-quart),
+    filter 0.5s var(--ease-out-quart);
+  will-change: transform;
+}
+
+.hero-visual-card:hover .hero-portrait-frame img {
+  transform: scale(1.035);
+}
+
+/* --------------------------------------------------------------------------
+ * 5. SCROLL-REVEAL & STAGGERED ELEMENT CHOREOGRAPHY
+ * -------------------------------------------------------------------------- */
+/* Base transition for elements tracked by IntersectionObserver (.motion-ready) */
+html.motion-ready .reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out-expo),
+    transform var(--dur-reveal) var(--ease-out-expo);
+  transition-delay: min(calc(var(--stagger-i, 0) * var(--stagger-step)), 350ms);
+  will-change: opacity, transform;
+}
+
+html.motion-ready .reveal-on-scroll.reveal-scale {
+  transform: translate3d(0, 20px, 0) scale(0.975);
+}
+
+html.motion-ready .reveal-on-scroll.reveal-left {
+  transform: translate3d(-22px, 0, 0);
+}
+
+html.motion-ready .reveal-on-scroll.reveal-right {
+  transform: translate3d(22px, 0, 0);
+}
+
+html.motion-ready .reveal-on-scroll.is-inview {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Section header eyebrow & title reveal polish */
+.section-eyebrow {
+  transition:
+    transform var(--dur-normal) var(--ease-out-quart),
+    border-color var(--dur-normal) var(--ease-out-quart),
+    box-shadow var(--dur-normal) var(--ease-out-quart);
+}
+
+.section-header:hover .section-eyebrow {
+  transform: translateY(-2px);
+  border-color: var(--glow-border-accent);
+  box-shadow: 0 6px 18px -4px rgba(6, 182, 212, 0.22);
+}
+
+/* Automatic CSS nth-child stagger fallback for card grids */
+.metrics-strip > *:nth-child(1),
+.quick-facts-grid > *:nth-child(1),
+.projects-grid > *:nth-child(1),
+.education-grid > *:nth-child(1),
+.services-grid > *:nth-child(1),
+.testimonials-grid > *:nth-child(1),
+.soft-skills-grid > *:nth-child(1) { --stagger-i: 0; }
+
+.metrics-strip > *:nth-child(2),
+.quick-facts-grid > *:nth-child(2),
+.projects-grid > *:nth-child(2),
+.education-grid > *:nth-child(2),
+.services-grid > *:nth-child(2),
+.testimonials-grid > *:nth-child(2),
+.soft-skills-grid > *:nth-child(2) { --stagger-i: 1; }
+
+.metrics-strip > *:nth-child(3),
+.quick-facts-grid > *:nth-child(3),
+.projects-grid > *:nth-child(3),
+.education-grid > *:nth-child(3),
+.services-grid > *:nth-child(3),
+.testimonials-grid > *:nth-child(3),
+.soft-skills-grid > *:nth-child(3) { --stagger-i: 2; }
+
+.metrics-strip > *:nth-child(4),
+.quick-facts-grid > *:nth-child(4),
+.projects-grid > *:nth-child(4),
+.education-grid > *:nth-child(4),
+.services-grid > *:nth-child(4),
+.testimonials-grid > *:nth-child(4),
+.soft-skills-grid > *:nth-child(4) { --stagger-i: 3; }
+
+.skill-bars-grid > *:nth-child(1) { --stagger-i: 0; }
+.skill-bars-grid > *:nth-child(2) { --stagger-i: 1; }
+.skill-bars-grid > *:nth-child(3) { --stagger-i: 2; }
+.skill-bars-grid > *:nth-child(4) { --stagger-i: 3; }
+.skill-bars-grid > *:nth-child(5) { --stagger-i: 4; }
+.skill-bars-grid > *:nth-child(6) { --stagger-i: 5; }
+
+/* Smooth section navigation focus flash */
+section:target {
+  animation: sectionTargetHighlight 1.2s var(--ease-out-quart);
+}
+
+/* --------------------------------------------------------------------------
+ * 6. BUTTONS, CTAs & MAGNETIC INTERACTION STATES
+ * -------------------------------------------------------------------------- */
+.btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform var(--dur-fast) var(--ease-out-expo),
+    box-shadow var(--dur-normal) var(--ease-out-quart),
+    background-color var(--dur-fast) var(--ease-out-quart),
+    border-color var(--dur-fast) var(--ease-out-quart),
+    color var(--dur-fast) var(--ease-out-quart);
+  will-change: transform;
+}
+
+/* Subtle specular sheen sweep across buttons on hover */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.65s var(--ease-out-expo);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn:hover::after {
+  left: 145%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 90ms;
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-btn-hover);
+}
+
+.btn-secondary:hover {
+  border-color: var(--glow-border-accent);
+  box-shadow: 0 10px 24px -8px rgba(6, 182, 212, 0.2);
+}
+
+/* Directional icon nudge inside buttons */
+.btn svg {
+  transition: transform var(--dur-fast) var(--ease-spring-soft);
+}
+
+.btn:hover svg {
+  transform: translateX(2px) scale(1.06);
+}
+
+/* Filter buttons & photo switcher pills */
+.filter-btn,
+.photo-switch-btn {
+  transition:
+    transform var(--dur-fast) var(--ease-out-quart),
+    background-color var(--dur-fast) var(--ease-out-quart),
+    border-color var(--dur-fast) var(--ease-out-quart),
+    color var(--dur-fast) var(--ease-out-quart),
+    box-shadow var(--dur-fast) var(--ease-out-quart);
+}
+
+.filter-btn:hover,
+.photo-switch-btn:hover {
+  transform: translateY(-1.5px);
+}
+
+.filter-btn:active,
+.photo-switch-btn:active {
+  transform: scale(0.97);
+}
+
+/* Social pills micro-lift & icon scale */
+.social-pill {
+  transition:
+    transform var(--dur-fast) var(--ease-spring-soft),
+    border-color var(--dur-fast) var(--ease-out-quart),
+    background-color var(--dur-fast) var(--ease-out-quart),
+    color var(--dur-fast) var(--ease-out-quart),
+    box-shadow var(--dur-normal) var(--ease-out-quart);
+}
+
+.social-pill svg {
+  transition: transform var(--dur-fast) var(--ease-spring-soft);
+}
+
+.social-pill:hover {
+  transform: translateY(-3px);
+  border-color: var(--glow-border-accent);
+  box-shadow: 0 10px 22px -6px rgba(6, 182, 212, 0.25);
+}
+
+.social-pill:hover svg {
+  transform: scale(1.14) rotate(-4deg);
+}
+
+/* --------------------------------------------------------------------------
+ * 7. CARDS, 3D DEPTH, SPOTLIGHT & HOVER ELEVATION
+ * -------------------------------------------------------------------------- */
+.glass-card,
+.metric-card,
+.fact-box,
+.edu-card,
+.service-card,
+.soft-skill-card,
+.contact-channel-item {
+  box-shadow: var(--shadow-card-rest);
+  transition:
+    transform var(--dur-normal) var(--ease-out-expo),
+    box-shadow var(--dur-normal) var(--ease-out-quart),
+    border-color var(--dur-normal) var(--ease-out-quart),
+    background-color var(--dur-normal) var(--ease-out-quart);
+}
+
+/* Metric Counter Cards */
+.metric-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, var(--accent-soft), transparent 65%);
+  opacity: 0;
+  transition: opacity var(--dur-normal) var(--ease-out-quart);
+  pointer-events: none;
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+.metric-card:hover::after {
+  opacity: 1;
+}
+
+.metric-value {
+  transition: transform var(--dur-normal) var(--ease-spring-soft);
+}
+
+.metric-card:hover .metric-value {
+  transform: scale(1.04);
+}
+
+/* About Portrait Tiles & Smooth Image Zoom/Parallax */
+.portrait-tile {
+  overflow: hidden;
+  transition:
+    transform var(--dur-normal) var(--ease-out-expo),
+    border-color var(--dur-normal) var(--ease-out-quart),
+    box-shadow var(--dur-normal) var(--ease-out-quart);
+}
+
+.portrait-tile img {
+  transition:
+    transform 0.75s var(--ease-out-expo),
+    filter 0.5s var(--ease-out-quart);
+  will-change: transform;
+}
+
+.portrait-tile:hover {
+  transform: translateY(-5px);
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+.portrait-tile:hover img {
+  transform: scale(1.055);
+}
+
+/* Quick Fact Boxes */
+.fact-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* --------------------------------------------------------------------------
+ * 8. SKILL PROGRESS BARS, CHIPS & SOFT SKILL CARDS
+ * -------------------------------------------------------------------------- */
+.skill-item {
+  transition:
+    transform var(--dur-fast) var(--ease-out-expo),
+    border-color var(--dur-fast) var(--ease-out-quart),
+    box-shadow var(--dur-normal) var(--ease-out-quart),
+    background-color var(--dur-fast) var(--ease-out-quart);
+}
+
+.skill-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--glow-border-accent);
+  box-shadow: 0 12px 26px -10px rgba(6, 182, 212, 0.22);
+}
+
+.skill-progress-track {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-progress-fill {
+  position: relative;
+  overflow: hidden;
+  transition: width 1.15s var(--ease-out-expo);
+}
+
+/* Subtle luminous shimmer sweep on skill bar when hovered */
+.skill-progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.38),
+    transparent
+  );
+  transform: translateX(-100%);
+}
+
+.skill-item:hover .skill-progress-fill::after {
+  animation: skillBarSheen 0.95s var(--ease-out-quart);
+}
+
+/* Soft Skill Cards */
+.soft-skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+.soft-skill-icon {
+  transition:
+    transform var(--dur-normal) var(--ease-spring-soft),
+    background-color var(--dur-fast) var(--ease-out-quart),
+    box-shadow var(--dur-fast) var(--ease-out-quart);
+}
+
+.soft-skill-card:hover .soft-skill-icon {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 0 18px var(--accent-soft);
+}
+
+/* Tech Stack Chips */
+.chip {
+  transition:
+    transform var(--dur-fast) var(--ease-spring-soft),
+    border-color var(--dur-fast) var(--ease-out-quart),
+    background-color var(--dur-fast) var(--ease-out-quart),
+    color var(--dur-fast) var(--ease-out-quart);
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--glow-border-accent);
+  color: var(--accent-bright);
+}
+
+/* --------------------------------------------------------------------------
+ * 9. EXPERIENCE TIMELINE ANIMATIONS
+ * -------------------------------------------------------------------------- */
+.timeline-dot {
+  animation: timelineDotPulse 3.2s var(--ease-in-out-smooth) infinite;
+  transition: transform var(--dur-fast) var(--ease-spring-soft);
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.22);
+}
+
+.timeline-item .glass-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+.timeline-list li {
+  transition: transform var(--dur-fast) var(--ease-out-quart),
+              color var(--dur-fast) var(--ease-out-quart);
+}
+
+.timeline-list li:hover {
+  transform: translateX(4px);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+ * 10. PROJECT CARDS: 3D TILT DEPTH & IMAGE ZOOM/PARALLAX
+ * -------------------------------------------------------------------------- */
+.project-card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    box-shadow 0.45s var(--ease-out-quart),
+    border-color 0.35s var(--ease-out-quart),
+    opacity 0.35s var(--ease-out-quart);
+  will-change: transform, box-shadow;
+}
+
+.project-card:hover {
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Smooth project preview zoom & parallax on hover */
+.project-preview-window {
+  overflow: hidden;
+}
+
+.project-preview-window .mockup-canvas {
+  transition:
+    transform 0.7s var(--ease-out-expo),
+    filter 0.45s var(--ease-out-quart);
+  will-change: transform;
+}
+
+.project-card:hover .project-preview-window .mockup-canvas {
+  transform: scale(1.045) translateY(-2px);
+}
+
+.project-preview-window .preview-hover-overlay {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition:
+    opacity var(--dur-normal) var(--ease-out-quart),
+    transform var(--dur-normal) var(--ease-out-expo);
+}
+
+/* Filter transition when switching project categories */
+.project-card.is-filtering-in {
+  animation: heroEntranceFadeUp 0.45s var(--ease-out-expo) both;
+}
+
+/* --------------------------------------------------------------------------
+ * 11. EDUCATION RINGS, SERVICES, TESTIMONIALS & CONTACT
+ * -------------------------------------------------------------------------- */
+.edu-card:hover,
+.service-card:hover,
+.testimonials-grid > .glass-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+.ring-meter {
+  transition: stroke-dashoffset 1.35s var(--ease-out-expo);
+}
+
+.edu-card:hover .edu-ring-wrap {
+  transform: scale(1.06);
+  transition: transform var(--dur-normal) var(--ease-spring-soft);
+}
+
+.service-icon-box {
+  transition:
+    transform var(--dur-normal) var(--ease-spring-soft),
+    box-shadow var(--dur-normal) var(--ease-out-quart),
+    border-color var(--dur-fast) var(--ease-out-quart);
+}
+
+.service-card:hover .service-icon-box {
+  transform: translateY(-3px) scale(1.08);
+  border-color: var(--glow-border-accent);
+  box-shadow: 0 10px 22px -6px rgba(6, 182, 212, 0.28);
+}
+
+/* Contact Channels & Form Controls */
+.contact-channel-item:hover {
+  transform: translateX(4px);
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-card-rest);
+}
+
+.form-control {
+  transition:
+    border-color var(--dur-fast) var(--ease-out-quart),
+    box-shadow var(--dur-fast) var(--ease-out-quart),
+    background-color var(--dur-fast) var(--ease-out-quart),
+    transform var(--dur-fast) var(--ease-out-quart);
+}
+
+.form-control:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px var(--accent-soft),
+              0 8px 20px -6px rgba(6, 182, 212, 0.16);
+}
+
+/* --------------------------------------------------------------------------
+ * 12. BACK-TO-TOP BUTTON & FLOATING SCROLL ACTION
+ * -------------------------------------------------------------------------- */
+a[aria-label="Back to top"] {
+  transition:
+    transform var(--dur-fast) var(--ease-spring-soft),
+    box-shadow var(--dur-normal) var(--ease-out-quart);
+}
+
+a[aria-label="Back to top"]:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-btn-hover);
+}
+
+/* Floating Back-to-Top Button (auto-enhanced via JS or standalone) */
+.back-to-top-fab {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 88;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-glass-strong);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-highlight);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-card-rest);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 14px, 0) scale(0.9);
+  transition:
+    opacity var(--dur-normal) var(--ease-out-quart),
+    visibility var(--dur-normal) var(--ease-out-quart),
+    transform var(--dur-normal) var(--ease-spring-soft),
+    border-color var(--dur-fast) var(--ease-out-quart),
+    background-color var(--dur-fast) var(--ease-out-quart),
+    box-shadow var(--dur-normal) var(--ease-out-quart);
+}
+
+.back-to-top-fab.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.back-to-top-fab:hover {
+  transform: translate3d(0, -4px, 0) scale(1.06);
+  border-color: var(--glow-border-accent);
+  box-shadow: var(--shadow-btn-hover);
+  color: var(--accent-bright);
+}
+
+.back-to-top-fab:active {
+  transform: translate3d(0, -1px, 0) scale(0.96);
+}
+
+.back-to-top-fab svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--dur-fast) var(--ease-spring-soft);
+}
+
+.back-to-top-fab:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Modal Dialog Smooth Scale & Fade Transition */
+.modal-backdrop {
+  transition:
+    opacity var(--dur-normal) var(--ease-out-quart),
+    backdrop-filter var(--dur-normal) var(--ease-out-quart);
+}
+
+.modal-dialog {
+  transform: translateY(16px) scale(0.97);
+  transition:
+    transform var(--dur-normal) var(--ease-out-expo),
+    box-shadow var(--dur-normal) var(--ease-out-quart);
+}
+
+.modal-backdrop.open .modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+/* --------------------------------------------------------------------------
+ * 13. ACCESSIBILITY: PREFERS-REDUCED-MOTION OVERRIDE
+ * -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html.motion-ready .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-section::before,
+  .hero-section::after,
+  .hero-floating-badge,
+  .timeline-dot,
+  .availability-dot {
+    animation: none !important;
+  }
+}

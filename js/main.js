@@ -324,6 +324,72 @@
     });
   }
 
+  function initAboutPhotoCarousel() {
+    const carousel = document.getElementById("about-photo-carousel");
+    const track = document.getElementById("about-photo-track");
+    const previousBtn = document.getElementById("about-photo-previous");
+    const nextBtn = document.getElementById("about-photo-next");
+    const countEl = document.getElementById("about-photo-count");
+    if (!carousel || !track || !previousBtn || !nextBtn || !countEl) return;
+
+    const slides = Array.from(track.querySelectorAll(".portrait-tile"));
+    if (!slides.length) return;
+    let activeIndex = 0;
+    let pointerStart = null;
+
+    function updateControls() {
+      previousBtn.disabled = activeIndex === 0;
+      nextBtn.disabled = activeIndex === slides.length - 1;
+      countEl.textContent = (activeIndex + 1) + " / " + slides.length + " photos";
+    }
+
+    function updatePosition() {
+      const maxOffset = Math.max(0, track.scrollWidth - carousel.clientWidth);
+      const offset = Math.min(slides[activeIndex].offsetLeft, maxOffset);
+      track.style.transform = "translateX(-" + offset + "px)";
+      updateControls();
+    }
+
+    function showSlide(index) {
+      activeIndex = Math.max(0, Math.min(index, slides.length - 1));
+      updatePosition();
+    }
+
+    previousBtn.addEventListener("click", function () {
+      showSlide(activeIndex - 1);
+    });
+    nextBtn.addEventListener("click", function () {
+      showSlide(activeIndex + 1);
+    });
+    carousel.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft" && activeIndex > 0) {
+        event.preventDefault();
+        showSlide(activeIndex - 1);
+      } else if (event.key === "ArrowRight" && activeIndex < slides.length - 1) {
+        event.preventDefault();
+        showSlide(activeIndex + 1);
+      }
+    });
+    carousel.addEventListener("pointerdown", function (event) {
+      pointerStart = { id: event.pointerId, x: event.clientX };
+    });
+    window.addEventListener("pointerup", function (event) {
+      if (!pointerStart || event.pointerId !== pointerStart.id) return;
+      const dragDistance = event.clientX - pointerStart.x;
+      pointerStart = null;
+      if (Math.abs(dragDistance) > 40) {
+        showSlide(activeIndex + (dragDistance < 0 ? 1 : -1));
+      }
+    });
+    window.addEventListener("pointercancel", function (event) {
+      if (pointerStart && event.pointerId === pointerStart.id) {
+        pointerStart = null;
+      }
+    });
+    window.addEventListener("resize", updatePosition);
+    updatePosition();
+  }
+
   /* --------------------------------------------------------------------------
    * 7. CUSTOM CURSOR & MAGNETIC HOVER BUTTONS
    * -------------------------------------------------------------------------- */
@@ -812,6 +878,112 @@
     setInterval(updateClock, 1000);
   }
 
+  function initAboutPhotoCarousel() {
+  var track = document.getElementById('about-photo-carousel');
+  if (!track) return;
+
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.carousel-slide'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#about-gallery-dots .gallery-dot'));
+  var prevBtn = document.getElementById('gallery-prev-btn');
+  var nextBtn = document.getElementById('gallery-next-btn');
+  var counterEl = document.getElementById('about-gallery-counter');
+  var total = slides.length;
+  var currentIndex = 0;
+
+  function formatNum(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+
+  function updateUI(activeIndex) {
+    currentIndex = Math.max(0, Math.min(total - 1, activeIndex));
+    slides.forEach(function (slide, idx) {
+      slide.classList.toggle('is-active', idx === currentIndex);
+    });
+    dots.forEach(function (dot, idx) {
+      var active = idx === currentIndex;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    if (counterEl) {
+      counterEl.textContent = formatNum(currentIndex + 1) + ' / ' + formatNum(total);
+    }
+    if (prevBtn) prevBtn.disabled = currentIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentIndex === total - 1;
+  }
+
+  function scrollToSlide(index) {
+    var targetIndex = Math.max(0, Math.min(total - 1, index));
+    var targetSlide = slides[targetIndex];
+    if (!targetSlide) return;
+    var leftPos = targetSlide.offsetLeft - track.offsetLeft - 4;
+    track.scrollTo({
+      left: Math.max(0, leftPos),
+      behavior: 'smooth'
+    });
+    updateUI(targetIndex);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function () { scrollToSlide(currentIndex - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { scrollToSlide(currentIndex + 1); });
+
+  dots.forEach(function (dot, idx) {
+    dot.addEventListener('click', function () { scrollToSlide(idx); });
+  });
+
+  // Sync active dot & counter on native touch/trackpad scroll
+  var scrollTicking = false;
+  track.addEventListener('scroll', function () {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    window.requestAnimationFrame(function () {
+      var trackLeft = track.scrollLeft;
+      var closestIdx = 0;
+      var minDiff = Infinity;
+      slides.forEach(function (slide, idx) {
+        var diff = Math.abs((slide.offsetLeft - track.offsetLeft) - trackLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = idx;
+        }
+      });
+      updateUI(closestIdx);
+      scrollTicking = false;
+    });
+  }, { passive: true });
+
+  // Keyboard Left / Right arrow navigation
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      scrollToSlide(currentIndex + 1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      scrollToSlide(currentIndex - 1);
+    }
+  });
+
+  // Desktop mouse drag-to-scroll
+  var isDown = false, startX = 0, scrollStart = 0;
+  track.addEventListener('mousedown', function (e) {
+    isDown = true;
+    track.classList.add('is-dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollStart = track.scrollLeft;
+  });
+  window.addEventListener('mouseup', function () {
+    isDown = false;
+    track.classList.remove('is-dragging');
+  });
+  track.addEventListener('mousemove', function (e) {
+    if (!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollStart - (x - startX) * 1.35;
+  });
+
+  updateUI(0);
+}
+
   /* --------------------------------------------------------------------------
    * INITIALIZE ALL MODULES ON DOM READY
    * -------------------------------------------------------------------------- */
@@ -821,6 +993,7 @@
     initHeroCanvas();
     initTypingEffect();
     initPortraitSwitcher();
+    initAboutPhotoCarousel();
     initCursorAndMagnetic();
     initTiltAndSpotlight();
     initSkillOrbitCanvas();
@@ -828,6 +1001,7 @@
     initProjects();
     initContactForm();
     initUtilitiesAndModals();
+    initAboutPhotoCarousel();
   }
 
   if (document.readyState === "loading") {
