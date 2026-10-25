@@ -1,0 +1,389 @@
+/**
+ * ============================================================================
+ * SUBHADIP BETAL — MODULAR 3D PORTFOLIO & WEBGL DEPTH STYLESHEET (portfolio-3d.css)
+ * ============================================================================
+ * HOW TO INCLUDE OR EXCLUDE:
+ *   Include in <head> AFTER css/styles.css and css/animations.css:
+ *     link rel="stylesheet" href="css/portfolio-3d.css"
+ *
+ *   To disable the 3D visual layer and revert to the classic 2D layout,
+ *   simply remove or comment out the link tag above (and js/portfolio-3d.js).
+ * ============================================================================
+ */
+
+/* ==========================================================================
+   PREMIUM 3D DEVELOPER PORTFOLIO DEPTH & WEBGL ARCHITECTURE
+   ========================================================================== */
+:root {
+  --perspective-stage: 1200px;
+  --perspective-card: 1050px;
+  --hero-px: 0;
+  --hero-py: 0;
+  --card-glare-opacity: 0;
+  --card-glare-x: 50%;
+  --card-glare-y: 50%;
+}
+
+/* 3D Scene Mode Switcher Button in Navbar */
+.scene-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  letter-spacing: 0.02em;
+  border-color: var(--border-accent);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(99, 102, 241, 0.12));
+  color: var(--text-primary);
+  box-shadow: 0 0 18px -4px rgba(6, 182, 212, 0.28);
+}
+
+.scene-mode-btn svg {
+  color: var(--accent-bright);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scene-mode-btn:hover svg {
+  transform: rotateY(180deg) rotateZ(15deg);
+}
+
+@media (max-width: 900px) {
+  .scene-mode-btn span {
+    display: none;
+  }
+  .scene-mode-btn {
+    padding: 0.45rem 0.6rem;
+  }
+}
+
+/* 1. HERO 3D STAGE & MULTI-LAYER DEPTH */
+.hero-section {
+  perspective: var(--perspective-stage);
+  transform-style: preserve-3d;
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.94;
+  transition: opacity 0.5s ease;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.hero-copy {
+  transform-style: preserve-3d;
+  transform: translate3d(
+    calc(var(--hero-px, 0) * -6px),
+    calc(var(--hero-py, 0) * -6px),
+    12px
+  );
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 3D Hero Portrait Showcase Card + Floating Spatial Telemetry Chips */
+.hero-visual-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow:
+    0 30px 70px -20px rgba(2, 6, 23, 0.78),
+    0 0 42px -10px rgba(6, 182, 212, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+[data-theme="light"] .hero-visual-card {
+  box-shadow:
+    0 26px 60px -18px rgba(15, 23, 42, 0.18),
+    0 0 36px -10px rgba(2, 132, 199, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.hero-visual-card .hero-photo-frame {
+  transform: translateZ(24px);
+  transform-style: preserve-3d;
+  box-shadow: 0 18px 38px -14px rgba(0, 0, 0, 0.6);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+}
+
+.hero-visual-card:hover .hero-photo-frame {
+  transform: translateZ(34px);
+  box-shadow: 0 24px 48px -12px rgba(6, 182, 212, 0.32);
+}
+
+.hero-visual-card .photo-hud-top {
+  transform: translateZ(42px);
+}
+
+.hero-visual-card .photo-switcher-bar {
+  transform: translateZ(28px);
+}
+
+/* Floating 3D Holographic Code & Telemetry Badges around Hero Visual */
+.hero-3d-float-badge {
+  position: absolute;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.78rem;
+  border-radius: var(--radius-full);
+  background: rgba(8, 13, 27, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  box-shadow:
+    0 16px 32px -8px rgba(0, 0, 0, 0.58),
+    0 0 20px -4px rgba(6, 182, 212, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  white-space: nowrap;
+  transform-style: preserve-3d;
+}
+
+[data-theme="light"] .hero-3d-float-badge {
+  background: rgba(255, 255, 255, 0.88);
+  color: #0f172a;
+  border-color: rgba(2, 132, 199, 0.35);
+  box-shadow:
+    0 14px 28px -8px rgba(15, 23, 42, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.hero-3d-float-badge .float-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  box-shadow: 0 0 10px var(--accent-bright);
+}
+
+.hero-3d-float-badge.badge-tl {
+  top: -14px;
+  left: -18px;
+  transform: translateZ(48px) rotateZ(-2deg);
+  animation: float3dBadgeA 5.8s ease-in-out infinite;
+}
+
+.hero-3d-float-badge.badge-rm {
+  top: 44%;
+  right: -22px;
+  transform: translateZ(56px) rotateZ(2deg);
+  border-color: rgba(99, 102, 241, 0.42);
+  animation: float3dBadgeB 6.4s ease-in-out infinite 0.8s;
+}
+
+.hero-3d-float-badge.badge-bl {
+  bottom: 58px;
+  left: -20px;
+  transform: translateZ(44px) rotateZ(-1.5deg);
+  border-color: rgba(16, 185, 129, 0.42);
+  animation: float3dBadgeA 6.1s ease-in-out infinite 1.5s;
+}
+
+@keyframes float3dBadgeA {
+  0%, 100% { transform: translateZ(48px) translateY(0px) rotateZ(-1.5deg); }
+  50% { transform: translateZ(56px) translateY(-7px) rotateZ(1deg); }
+}
+
+@keyframes float3dBadgeB {
+  0%, 100% { transform: translateZ(54px) translateY(0px) rotateZ(1.5deg); }
+  50% { transform: translateZ(62px) translateY(6px) rotateZ(-1deg); }
+}
+
+@media (max-width: 768px) {
+  .hero-3d-float-badge.badge-tl { left: 6px; top: -10px; }
+  .hero-3d-float-badge.badge-rm { right: 6px; }
+  .hero-3d-float-badge.badge-bl { left: 6px; }
+}
+
+/* 2. CONSISTENT 3D DEPTH HIERARCHY & SPECULAR GLARE ACROSS ALL CARDS */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Dynamic 3D Specular Light Glare Overlay */
+.card-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 3;
+  opacity: var(--card-glare-opacity, 0);
+  background:
+    radial-gradient(
+      420px circle at var(--card-glare-x, 50%) var(--card-glare-y, 50%),
+      rgba(255, 255, 255, 0.14),
+      rgba(34, 211, 238, 0.08) 38%,
+      transparent 72%
+    );
+  mix-blend-mode: screen;
+  transition: opacity 0.35s ease;
+}
+
+[data-theme="light"] .card-3d-glare {
+  background:
+    radial-gradient(
+      420px circle at var(--card-glare-x, 50%) var(--card-glare-y, 50%),
+      rgba(255, 255, 255, 0.65),
+      rgba(2, 132, 199, 0.08) 40%,
+      transparent 72%
+    );
+  mix-blend-mode: overlay;
+}
+
+/* Multi-plane Z-elevation inside 3D cards on hover */
+.metric-card .metric-value,
+.edu-card .edu-score-badge,
+.service-card .service-icon-box,
+.soft-skill-card .soft-skill-icon,
+.timeline-card .timeline-badge,
+.testimonial-card .quote-mark {
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.metric-card:hover .metric-value,
+.edu-card:hover .edu-score-badge,
+.service-card:hover .service-icon-box,
+.soft-skill-card:hover .soft-skill-icon,
+.timeline-card:hover .timeline-badge,
+.testimonial-card:hover .quote-mark {
+  transform: translateZ(24px) scale(1.04);
+}
+
+.project-card .project-preview-window {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+
+.project-card:hover .project-preview-window {
+  transform: translateZ(26px) translateY(-3px);
+  box-shadow: 0 20px 40px -15px rgba(2, 6, 23, 0.72), 0 0 28px -8px rgba(6, 182, 212, 0.28);
+}
+
+.project-card .project-body {
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-body {
+  transform: translateZ(16px);
+}
+
+/* 3. 3D PERSPECTIVE VIEWFINDER GALLERY CAROUSEL (COVERFLOW DEPTH) */
+.about-gallery-frame {
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+.photo-carousel-track {
+  perspective: 1100px;
+  transform-style: preserve-3d;
+  padding-top: 0.35rem;
+  padding-bottom: 0.8rem;
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide {
+  transform-style: preserve-3d;
+  transform: perspective(900px) translateZ(-14px) rotateY(-5deg) scale(0.95);
+  opacity: 0.76;
+  transition:
+    transform 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.45s ease,
+    opacity 0.4s ease;
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide.is-prev {
+  transform: perspective(900px) translateZ(-10px) rotateY(6deg) scale(0.96);
+  opacity: 0.82;
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide.is-next {
+  transform: perspective(900px) translateZ(-10px) rotateY(-6deg) scale(0.96);
+  opacity: 0.82;
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide.is-active {
+  transform: perspective(900px) translateZ(14px) rotateY(0deg) scale(1);
+  opacity: 1;
+  border-color: var(--border-accent);
+  box-shadow:
+    0 18px 38px -12px rgba(2, 6, 23, 0.68),
+    0 0 28px -8px rgba(6, 182, 212, 0.36);
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide .portrait-exif-badge,
+.photo-carousel-track .portrait-tile.carousel-slide .portrait-tile-tag {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, border-color 0.3s ease;
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide:hover .portrait-exif-badge {
+  transform: translateZ(26px) translateY(-2px);
+}
+
+.photo-carousel-track .portrait-tile.carousel-slide:hover .portrait-tile-tag {
+  transform: translateZ(24px) translateY(-2px);
+  border-color: var(--border-accent);
+}
+
+/* 4. 3D INTERACTIVE SKILL SPHERE / CONSTELLATION STAGE */
+.orbit-canvas-wrap {
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  cursor: grab;
+}
+
+.orbit-canvas-wrap:active {
+  cursor: grabbing;
+}
+
+.orbit-3d-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-accent);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-bright);
+}
+
+/* 5. SECTION 3D SCROLL PERSPECTIVE ENTRY */
+.section-header {
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+/* 6. REDUCED MOTION & 3D ACCESSIBILITY FALLBACK */
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy,
+  .hero-visual-card,
+  .hero-visual-card .hero-photo-frame,
+  .hero-3d-float-badge,
+  .tilt-card,
+  .photo-carousel-track .portrait-tile.carousel-slide {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

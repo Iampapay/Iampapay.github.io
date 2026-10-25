@@ -87,6 +87,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/portfolio-3d.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -143,6 +144,15 @@
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-sm scene-mode-btn" id="scene-3d-mode-btn" data-magnetic title="Cycle 3D WebGL Architecture Scene">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          <span id="scene-3d-mode-label"><smal>Quantum Core</smal></span>
         </button>
 
         <a href="#contact" class="btn btn-primary btn-sm" data-magnetic>
@@ -263,6 +273,18 @@
 
           <!-- Hero Right Column: Interactive Portrait Showcase -->
           <div class="hero-visual-card tilt-card">
+            <div class="hero-3d-float-badge badge-tl" aria-hidden="true">
+              <span class="float-dot"></span>
+              <span>Laravel::MVC • REST API</span>
+            </div>
+            <div class="hero-3d-float-badge badge-rm" aria-hidden="true">
+              <span class="float-dot" style="background:#818cf8;box-shadow:0 0 10px #818cf8;"></span>
+              <span>MySQL • Normalized Schema</span>
+            </div>
+            <div class="hero-3d-float-badge badge-bl" aria-hidden="true">
+              <span class="float-dot" style="background:#10b981;box-shadow:0 0 10px #10b981;"></span>
+              <span>WebGL 3D • Interactive</span>
+            </div>
             <div class="hero-photo-frame">
               <img id="hero-portrait-img" src="assets/images/profile-studio.jpg" alt="Portrait of Subhadip Betal, Senior Software Developer" width="720" height="900">
               <div class="photo-hud-top">
@@ -636,7 +658,10 @@
             </div>
 
             <div class="orbit-canvas-wrap">
-              <canvas id="skill-orbit-canvas" aria-label="Animated orbital diagram of Subhadip Betal's 14 technical skills"></canvas>
+              <canvas id="skill-orbit-canvas" aria-label="Interactive 3D spherical diagram of Subhadip Betal's 14 technical skills"></canvas>
+            </div>
+            <div class="orbit-3d-hint" aria-hidden="true">
+              <span>⟳ Drag or hover to spin 3D Skill Sphere</span>
             </div>
 
             <div style="width:100%;text-align:left;background:var(--bg-secondary);padding:1rem;border-radius:var(--radius-md);border:1px solid var(--border-subtle);">
@@ -908,7 +933,7 @@
           <span class="section-eyebrow">05 / Academic Foundation</span>
           <h2 class="section-title">Education &amp; <span class="gradient-text">Academic Credentials</span></h2>
           <p class="section-subtitle">
-            Consistent academic progression in Computer Applications, culminating in an 87.9% MCA distinction.
+            Formal academic training in Computer Applications, Software Engineering, and foundational sciences.
           </p>
         </div>
 
@@ -917,15 +942,15 @@
             <div class="edu-score-ring" aria-hidden="true">
               <svg viewBox="0 0 84 84">
                 <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
-                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="87.9"></circle>
+                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="100"></circle>
               </svg>
-              <div class="edu-score-label">87.9%</div>
+              <div class="edu-score-label">MCA</div>
             </div>
             <div>
-              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Master's Degree</span>
+              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Postgraduate • First Class Distinction</span>
               <h3 class="edu-degree">Master of Computer Applications (MCA)</h3>
               <div class="edu-school">Calcutta Institute of Technology</div>
-              <p class="edu-detail">Graduated with 87.9% — Advanced Software Engineering, Relational Databases &amp; Web Technologies.</p>
+              <p class="edu-detail">Focused on Advanced Software Engineering, Relational Database Architecture, System Design &amp; Full-Stack Web Technologies.</p>
             </div>
           </article>
 
@@ -933,15 +958,15 @@
             <div class="edu-score-ring" aria-hidden="true">
               <svg viewBox="0 0 84 84">
                 <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
-                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="73.67"></circle>
+                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="80"></circle>
               </svg>
-              <div class="edu-score-label">73.67%</div>
+              <div class="edu-score-label">BCA</div>
             </div>
             <div>
-              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Bachelor's Degree</span>
+              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Undergraduate • First Class Honours</span>
               <h3 class="edu-degree">Bachelor of Computer Applications (BCA)</h3>
               <div class="edu-school">Mahishadal Raj College</div>
-              <p class="edu-detail">Graduated with 73.67% — Object-Oriented Programming, Data Structures, PHP &amp; MySQL.</p>
+              <p class="edu-detail"> Specialized in Object-Oriented Programming, Data Structures &amp; Algorithms, Operating Systems, PHP &amp; MySQL.</p>
             </div>
           </article>
 
@@ -949,15 +974,15 @@
             <div class="edu-score-ring" aria-hidden="true">
               <svg viewBox="0 0 84 84">
                 <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
-                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="63.2"></circle>
+                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="65"></circle>
               </svg>
-              <div class="edu-score-label">63.2%</div>
+              <div class="edu-score-label">XII</div>
             </div>
             <div>
-              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Higher Secondary (12th)</span>
+              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Higher Secondary • WBCHSE</span>
               <h3 class="edu-degree">Higher Secondary Examination (12th)</h3>
               <div class="edu-school">Mahishadal Raj High School</div>
-              <p class="edu-detail">Completed Higher Secondary curriculum with 63.2% aggregate score.</p>
+              <p class="edu-detail">Completed senior secondary curriculum with a focus on analytical problem-solving, mathematics, and computer fundamentals.</p>
             </div>
           </article>
 
@@ -965,15 +990,15 @@
             <div class="edu-score-ring" aria-hidden="true">
               <svg viewBox="0 0 84 84">
                 <circle class="ring-bg" cx="42" cy="42" r="36"></circle>
-                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="69.85"></circle>
+                <circle class="ring-meter" cx="42" cy="42" r="36" data-score="50"></circle>
               </svg>
-              <div class="edu-score-label">69.85%</div>
+              <div class="edu-score-label">X</div>
             </div>
             <div>
-              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Secondary (10th)</span>
+              <span class="chip" style="margin-bottom:0.4rem;display:inline-block;">Secondary • WBBSE</span>
               <h3 class="edu-degree">Secondary Examination (10th)</h3>
               <div class="edu-school">Mahishadal Raj High School</div>
-              <p class="edu-detail">Completed Secondary board examination with 69.85% aggregate score.</p>
+              <p class="edu-detail">Completed secondary board examination with strong foundations in core sciences, mathematics, and languages.</p>
             </div>
           </article>
         </div>
@@ -1280,5 +1305,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="js/portfolio-3d.js" defer></script>
 </body>
 </html>
